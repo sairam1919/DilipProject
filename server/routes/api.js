@@ -36,8 +36,8 @@ router.get("/user", (req, res) => {
     });
 });
 
-router.get("/company", (req, res) => {
-    connection.query('SELECT * FROM company', function (error, results, fields) {
+router.get("/customer", (req, res) => {
+    connection.query('SELECT * FROM customer', function (error, results, fields) {
         if (error) {
             apiResponse.message = "Error while connecting database"
             apiResponse.statuscode = "400";
@@ -46,12 +46,12 @@ router.get("/company", (req, res) => {
         } else {
             if (results.length > 0) {
                 apiResponse.statuscode = "200";
-                apiResponse.message = "Successfully Fetched the Company Details";
+                apiResponse.message = "Successfully Fetched the customer Details";
                 apiResponse.result = results;
                 res.status(200).send(apiResponse);
             } else {
                 apiResponse.statuscode = "2001";
-                apiResponse.message = "No Company Details Available";
+                apiResponse.message = "No customer Details Available";
                 apiResponse.result = [];
                 res.status(200).send(apiResponse);
             }
@@ -152,7 +152,7 @@ router.post("/user", (req, res) => {
         } else {
             apiResponse.statuscode = "200";
             apiResponse.message = "User Created Successfully";
-            apiResponse.result = results;
+            apiResponse.result = {};
             res.status(200).send(apiResponse);
         }
     });
@@ -178,7 +178,7 @@ router.post("/timeactivity", (req, res) => {
         } else {
             apiResponse.statuscode = "200";
             apiResponse.message = "User Created Successfully";
-            apiResponse.result = results;
+            apiResponse.result = {};
             res.status(200).send(apiResponse);
         }
     });
@@ -196,17 +196,17 @@ router.post("/service", (req, res) => {
             res.status(400).send(apiResponse);
         } else {
             apiResponse.statuscode = "200";
-            apiResponse.message = "Company Created Successfully";
-            apiResponse.result = results;
+            apiResponse.message = "customer Created Successfully";
+            apiResponse.result = {};
             res.status(200).send(apiResponse);
         }
     });
 });
 
 //POST API
-router.post("/company", (req, res) => {
-    let company_name = req.body.company_name;
-    var query1 = "INSERT INTO company ( company_name ) VALUES ( " + "'" + company_name + "'" + " )";
+router.post("/customer", (req, res) => {
+    let customer_name = req.body.customer_name;
+    var query1 = "INSERT INTO customer ( customer_name ) VALUES ( " + "'" + customer_name + "'" + " )";
     connection.query(query1, function (error, results, fields) {
         if (error) {
             apiResponse.message = "Error while connecting database"
@@ -215,8 +215,8 @@ router.post("/company", (req, res) => {
             res.status(400).send(apiResponse);
         } else {
             apiResponse.statuscode = "200";
-            apiResponse.message = "Company Created Successfully";
-            apiResponse.result = results;
+            apiResponse.message = "customer Created Successfully";
+            apiResponse.result = {};
             res.status(200).send(apiResponse);
         }
     });
@@ -224,8 +224,8 @@ router.post("/company", (req, res) => {
 
 
 //PUT API
-router.put("/changePassword/:id", (req, res) => {
-    var query1 = 'SELECT * FROM user_data WHERE user_data.user_name=' + "'" + req.params.id + "'";
+router.post("/changePassword", (req, res) => {
+    var query1 = 'SELECT * FROM user_data WHERE user_data.user_name=' + "'" + req.body.user_name + "'";
     connection.query(query1, function (error, results, fields) {
         if (error) {
             apiResponse.message = "Error while connecting database"
@@ -236,12 +236,12 @@ router.put("/changePassword/:id", (req, res) => {
             if (!(results[0].password === req.body.oldPassword)) {
                 apiResponse.statuscode = "404";
                 apiResponse.message = "Password Does Not Match..!";
-                apiResponse.result = '';
+                apiResponse.result = {};
                 res.status(500).send(apiResponse);
             }
         }
     });
-    var query2 = "UPDATE user_data SET password= " + "'" + req.body.newPassword + "'" + " WHERE user_data.user_name=" + "'" + req.params.id + "'";
+    var query2 = "UPDATE user_data SET password= " + "'" + req.body.newPassword + "'" + " WHERE user_data.user_name=" + "'" + req.body.user_name + "'";
     connection.query(query2, function (error, results, fields) {
         if (error) {
             apiResponse.message = "Error while connecting database"
@@ -251,7 +251,7 @@ router.put("/changePassword/:id", (req, res) => {
         } else {
             apiResponse.statuscode = "200";
             apiResponse.message = "Password Updated Successfully";
-            apiResponse.result = results;
+            apiResponse.result = {};
             res.status(200).send(apiResponse);
         }
     });

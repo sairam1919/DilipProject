@@ -1,0 +1,151 @@
+API User Creation: http://localhost:4000/api/user
+Method: Post
+Body: {
+    "first_name": "Sairamreddy",
+    "last_name": "Ponnala",
+    "user_name": "Sairamreddy",
+    "email":"Sairamreddy512@gmail.com",
+    "role": "Admin",
+    "password":"Sram@225"
+}
+Response:{
+    "message": "User Created Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+Get UserList: http://localhost:4000/api/user
+Method: Get
+Response: {
+    "message": "Successfully Fetched the UserDetails",
+    "result": [
+        {
+            "first_name": "Sairamreddy",
+            "last_name": "Ponnala",
+            "user_name": "undefined",
+            "email": "Sairamreddy512@gmail.com",
+            "password": "Sram@225",
+            "role": "Admin"
+        }
+    ],
+    "statuscode": "200"
+}
+
+User Login: http://localhost:4000/api/login
+Method: Post
+Body: {"user_name": "Sairamreddy", "password": "Sram@225"}
+Response: {
+    "message": "User Authenticated Successfully",
+    "result": {
+        "first_name": "Sairamreddy",
+        "last_name": "Ponnala",
+        "user_name": "Sairamreddy",
+        "email": "Sairamreddy512@gmail.com",
+        "password": "Sram@225",
+        "role": "Admin"
+    },
+    "statuscode": "200"
+}
+
+Time Activity:  http://localhost:4000/api/timeactivity
+Method: Post
+Body:{
+    "customer_name": "Infosys",
+    "name":"Dilip",
+    "date": "2020-3-12",
+    "service_name": "UI",
+    "billable": true,
+    "time": "22:30:00",
+    "description": "I have worked"
+}
+Response:{
+    "message": "User Created Successfully",
+    "result": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 0,
+        "serverStatus": 2,
+        "warningCount": 0,
+        "message": "",
+        "protocol41": true,
+        "changedRows": 0
+    },
+    "statuscode": "200"
+}
+
+
+Get Time Activity:  http://localhost:4000/api/timeactivity
+Method: Get
+Response:{
+    "message": "Successfully Fetched the Time Activity Details",
+    "result": [
+        {
+            "customer_name": "Infosys",
+            "name": "Dilip",
+            "date": "undefined",
+            "service_name": "UI",
+            "billable": 1,
+            "time": "22:30:00",
+            "description": "I have worked"
+        }
+    ],
+    "statuscode": "200"
+}
+
+
+ChangePassword: http://localhost:4000/api/changePassword
+Method: Post
+Body:{"user_name": "Sairamreddy", "oldPassword": "Sram@225", "newPassword": "password"}
+Response:{
+    "message": "Password Updated Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+Save Services: http://localhost:4000/api/service
+Method: Post
+Body: {"service_name": "UI"}
+Response: {
+    "message": "Company Created Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+
+Get Service: http://localhost:4000/api/service
+Method: Get
+Response:{
+    "message": "Successfully Fetched the Services",
+    "result": [
+        {
+            "service_name": "UI"
+        }
+    ],
+    "statuscode": "200"
+}
+
+Save customer: http://localhost:4000/api/customer
+Method: Post
+Body: {"customer_name": "Infosys"}
+Response: {
+    "message": "customer Created Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+
+Get customer: http://localhost:4000/api/customer
+Method: Get
+Response:{
+    "message": "Successfully Fetched the customer Details",
+    "result": [
+        {
+            "customer_name": "Infosys"
+        }
+    ],
+    "statuscode": "200"
+}
+
+
+
+
