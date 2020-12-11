@@ -1,0 +1,144 @@
+END Point: http://localhost:5000/ticket/
+Method: GET
+Response: {
+    "message": "Successfully Fetched the Available Tickets",
+    "result": [
+        {
+            "user_name": "Sairamreddy",
+            "email": "xyz@gmail.com",
+            "ticket_id": "123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Raised",
+            "ticket_resolution": null,
+            "ticket_assignedto": null,
+            "ticket_createdby": "Sairamreddy"
+        }
+    ],
+    "statuscode": "200"
+}
+
+END POINT: http://localhost:5000/ticket/ 
+Method: POST
+Request: {
+            "user_name": "Dilip",
+            "email": "xyz@gmail.com",
+            "ticket_id": "0123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Raised",
+            "ticket_resolution": null,
+            "ticket_assignedto": null,
+            "ticket_createdby": "Sairamreddy"
+        }
+Result: {
+    "message": "Ticket Created Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+END POINT: http://localhost:5000/ticket/ 
+Method: PUT
+Request:
+{
+            "user_name": "Dilip",
+            "email": "xyz@gmail.com",
+            "ticket_id": "0123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Allocated",
+            "ticket_resolution": null,
+            "ticket_assignedto": "Parvez",
+            "ticket_createdby": "Sairamreddy"
+        }
+
+Response:{
+    "message": "Ticket Updated Successfully",
+    "result": {},
+    "statuscode": "200"
+}
+
+END POINT:http://localhost:5000/ticket/getTicketsbyAssigneeName/Dilip
+METHOD: GET
+Result: {
+    "message": "Successfully Fetched the Available Tickets",
+    "result": [
+        {
+            "user_name": "Sairamreddy",
+            "email": "xyz@gmail.com",
+            "ticket_id": "123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Raised",
+            "ticket_resolution": null,
+            "ticket_assignedto": Dilip,
+            "ticket_createdby": "Sairamreddy"
+        }
+    ],
+    "statuscode": "200"
+}
+
+END POINT:http://localhost:5000/ticket/getTicketsbyUserName/Sairamreddy
+METHOD: GET
+Result: {
+    "message": "Successfully Fetched the Available Tickets",
+    "result": [
+        {
+            "user_name": "Sairamreddy",
+            "email": "xyz@gmail.com",
+            "ticket_id": "123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Raised",
+            "ticket_resolution": null,
+            "ticket_assignedto": null,
+            "ticket_createdby": "Sairamreddy"
+        }
+    ],
+    "statuscode": "200"
+}
+
+END POINT:http://localhost:5000/ticket/getTicketbyTicketID/123456
+METHOD: GET
+Result: {
+    "message": "Successfully Fetched the Ticket Details",
+    "result": [
+        {
+            "user_name": "Sairamreddy",
+            "email": "xyz@gmail.com",
+            "ticket_id": "123456",
+            "ticket_content": "Not able to get the allowence",
+            "ticket_area": "Payrolle",
+            "ticket_attachments": null,
+            "comments": null,
+            "ticket_createddate": "2020-11-12",
+            "ticket_updateddate": null,
+            "ticket_status": "Raised",
+            "ticket_resolution": null,
+            "ticket_assignedto": null,
+            "ticket_createdby": "Sairamreddy"
+        }
+    ],
+    "statuscode": "200"
+}
+
