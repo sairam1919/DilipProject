@@ -36,6 +36,54 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/getTicketsbyUserName/:id", (req, res) => {
+    let query1 = 'SELECT * FROM tickets WHERE user_name = ' + req.params.id ;
+    connection.query(query1, function (error, results, fields) {
+        if (error) {
+            apiResponse.message = "Error while connecting database"
+            apiResponse.statuscode = "400";
+            apiResponse.result = error;
+            res.status(400).send(apiResponse);
+        } else {
+            if (results.length > 0) {
+                apiResponse.statuscode = "200";
+                apiResponse.message = "Successfully Fetched the Available Tickets";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            } else {
+                apiResponse.statuscode = "2001";
+                apiResponse.message = "No Tickets Available";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            }
+        }
+    });
+});
+
+router.get("/getTicketsbyAssignedName/:id", (req, res) => {
+    let query1 = 'SELECT * FROM tickets WHERE ticket_assignedto = ' + req.params.id ;
+    connection.query(query1, function (error, results, fields) {
+        if (error) {
+            apiResponse.message = "Error while connecting database"
+            apiResponse.statuscode = "400";
+            apiResponse.result = error;
+            res.status(400).send(apiResponse);
+        } else {
+            if (results.length > 0) {
+                apiResponse.statuscode = "200";
+                apiResponse.message = "Successfully Fetched the Available Tickets";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            } else {
+                apiResponse.statuscode = "2001";
+                apiResponse.message = "No Tickets Available";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            }
+        }
+    });
+});
+
 //POST API
 router.post("/", (req, res) => {
     let user_name = req.body.user_name;
