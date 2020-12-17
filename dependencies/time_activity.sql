@@ -5,6 +5,5 @@ CREATE TABLE `time_activity` (
   `service_name` varchar(45) NOT NULL,
   `billable` tinyint NOT NULL,
   `time` time NOT NULL,
-  `description` varchar(250) NOT NULL,
-  PRIMARY KEY (`name`)
+  `description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

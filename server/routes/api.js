@@ -6,7 +6,7 @@ const mysql = require('mysql');
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'Sram@225',
+    password: 'password',
     database: 'timesheetmanagement'
 });
 
@@ -84,6 +84,29 @@ router.get("/service", (req, res) => {
 
 router.get("/timeactivity", (req, res) => {
     connection.query('SELECT * FROM time_activity', function (error, results, fields) {
+        if (error) {
+            apiResponse.message = "Error while connecting database"
+            apiResponse.statuscode = "400";
+            apiResponse.result = error;
+            res.status(400).send(apiResponse);
+        } else {
+            if (results.length > 0) {
+                apiResponse.statuscode = "200";
+                apiResponse.message = "Successfully Fetched the Time Activity Details";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            } else {
+                apiResponse.statuscode = "2001";
+                apiResponse.message = "No Time Activity Details Available";
+                apiResponse.result = results;
+                res.status(200).send(apiResponse);
+            }
+        }
+    });
+});
+
+router.get("/timeactivity/:id", (req, res) => {
+    connection.query('SELECT * FROM time_activity WHERE time_activity.name = ' + "'" + req.params.id + "'", function (error, results, fields) {
         if (error) {
             apiResponse.message = "Error while connecting database"
             apiResponse.statuscode = "400";

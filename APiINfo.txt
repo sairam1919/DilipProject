@@ -147,5 +147,21 @@ Response:{
 }
 
 
-
+Get Timeactviy Based on the User Name: http://localhost:5000/api/timeactivity/Dilip
+Method: Get
+Response: {
+    "message": "Successfully Fetched the Time Activity Details",
+    "result": [
+        {
+            "customer_name": "Infosys",
+            "name": "Dilip",
+            "date": "2020-3-12",
+            "service_name": "UI",
+            "billable": 1,
+            "time": "22:30:00",
+            "description": "I have worked"
+        }
+    ],
+    "statuscode": "200"
+}
 
